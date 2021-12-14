@@ -21,25 +21,13 @@
 
         $input_field = $_POST['last-name'] . ' ' . $_POST['name'] . ' ' . $_POST['middle-name'];
         $pattern = "/[А-Яа-я-]+/";
-//        $last_name = trim($_POST['last-name'], " ");
-//        $name = trim($_POST['name'], " ");
-//        $middle_name = trim($_POST['middle-name'], " ");
-//
-//        $last_name_value = mb_substr($last_name, 0,1);
-//        $name_value = mb_substr($name, 0,1);
-//        $middle_name_value = mb_substr($middle_name, 0,1);
 
-        if(!preg_match($pattern, $input_field)) {
+        if(!preg_match($pattern, $input_field) || empty($input_field) {
             echo "Помилка! Перевірте правильність введених даних!";
         } else {
             echo "Все правильно, $input_field!";
         }
-
-//        if (!empty($input_field) ) {
-//            echo mb_strtoupper($last_name_value) .  mb_strtoupper($name_value) . mb_strtoupper($middle_name_value);
-//        } else {
-//            echo '<span style="color:red;">Заповніть поле!</span>';
-//        }
+        
         ?>
 
     </div>
