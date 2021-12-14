@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercise</title>
+</head>
+<body>
+    <div class="main">
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">Ваш email: <input type="text" name="email"><br>
+    <input type="submit">
+        </form>
+
+        <div class="message" style="margin-top: 1em;">
+
+        <?php
+        $at = '@';
+        $point = '.';
+        $input_field = $_POST['email'];
+        $point_index = strpos($input_field, $point) + 1;
+        $input_length = strlen($input_field);
+
+        echo '<br>';
+
+         if (!empty($input_field) && strpos($input_field, $at) && strpos($input_field, $point) && $point_index > strpos($input_field, $at) && $point_index !== $input_length ) {
+                echo "Entered address $input_field is correct!<br>";
+            } else {
+                echo '<span style="color:red;">Invalid address! Please enter the correct one!</span>';
+            }
+        ?>
+
+        </div>
+    </div>
+</body>
+</html>
