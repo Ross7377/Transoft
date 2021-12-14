@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Розділ 2 частина 2 завдання 3</title>
+</head>
+<body>
+<div class="main">
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">Ваш email: <input type="text" name="address"><br>
+        <input type="submit">
+    </form>
+
+    <div class="message" style="margin-top: 1em;">
+
+        <?php
+        $input_field = $_POST['address'];
+        $converter = preg_replace('|([\w\d]*)\s?(https?://([\d\w\.-]+\.[\w\.]{2,6})[^\s\]\[\<\>]*/?)|i', '$1 <a href="$2">$3</a>', $input_field);
+        echo '<br>';
+        echo $converter;
+
+        ?>
+
+    </div>
+</div>
+</body>
+</html>
