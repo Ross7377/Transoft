@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Розділ 2 частина 1 завдання 1</title>
+</head>
+<body>
+<div class="main">
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">Ваш email: <input type="text" name="email"><br>
+        <input type="submit">
+    </form>
+
+    <div class="message" style="margin-top: 1em;">
+
+        <?php
+
+        $pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]{2,4}+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+        $input_field = $_POST['email'];
+
+        echo '<br>';
+
+     if(!preg_match($pattern, $input_field)) {
+        echo "Помилка! Перевірте правильність введених даних!";
+     } else {
+         echo "Електронна адреса введена правильно!";
+     }
+        ?>
+
+    </div>
+</div>
+</body>
+</html>
