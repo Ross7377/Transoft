@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Розділ 2 частина 2 завдання 2</title>
+</head>
+<body>
+<div class="main">
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+        Прізвіще: <input type="text" name="last-name"><br>
+        Ім'я: <input type="text" name="name"><br>
+        По-батькові: <input type="text" name="middle-name"><br>
+        <input type="submit">
+    </form>
+    <div class="message" style="margin-top: 1em;">
+
+        <?php
+
+        $input_field = $_POST['last-name'] . ' ' . $_POST['name'] . ' ' . $_POST['middle-name'];
+        $pattern = "/[А-Яа-я-]+/";
+//        $last_name = trim($_POST['last-name'], " ");
+//        $name = trim($_POST['name'], " ");
+//        $middle_name = trim($_POST['middle-name'], " ");
+//
+//        $last_name_value = mb_substr($last_name, 0,1);
+//        $name_value = mb_substr($name, 0,1);
+//        $middle_name_value = mb_substr($middle_name, 0,1);
+
+        if(!preg_match($pattern, $input_field)) {
+            echo "Помилка! Перевірте правильність введених даних!";
+        } else {
+            echo "Все правильно, $input_field!";
+        }
+
+//        if (!empty($input_field) ) {
+//            echo mb_strtoupper($last_name_value) .  mb_strtoupper($name_value) . mb_strtoupper($middle_name_value);
+//        } else {
+//            echo '<span style="color:red;">Заповніть поле!</span>';
+//        }
+        ?>
+
+    </div>
+</div>
+</body>
+</html>
