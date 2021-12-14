@@ -25,9 +25,9 @@
         echo '<br>';
 
          if (!empty($input_field) && strpos($input_field, $at) && strpos($input_field, $point) && $point_index > strpos($input_field, $at) && $point_index !== $input_length ) {
-                echo "Entered address $input_field is correct!<br>";
+                echo "Введена адреса $input_field правильна!<br>";
             } else {
-                echo '<span style="color:red;">Invalid address! Please enter the correct one!</span>';
+                echo '<span style="color:red;">Неправильна адреса! Будь ласка, повторіть спробу!</span>';
             }
         ?>
 
