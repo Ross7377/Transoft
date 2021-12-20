@@ -13,7 +13,6 @@
         Висота: <input type="text" name="height">
         <input type="submit" value="Збудувати">
     </form>
-<!--    <div style="text-align: right;">-->
         <div style="text-align: right;">
         <?php
         if (!empty($_POST['height'])) {
