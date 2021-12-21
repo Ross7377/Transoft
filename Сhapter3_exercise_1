@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Розділ 3 завдання 1</title>
+</head>
+<body>
+<div>
+    <br>
+    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+        <label for="engines">Виберіть тип транспортного засобу:</label>
+        <select id="engines" name="engines">
+            <option value="gas">Бензин</option>
+            <option value="diesel">Дизель</option>
+        </select>
+        Обє'м двигуна (куб. см): <input type="number" name="volume" required><br>
+        Рік випуску автомобіля: <input type="number" name="year" required><br>
+        Вартість автомобіля: <input type="number" name="price" required><br>
+        <input type="submit" value="Підрахувати">
+    </form>
+    <?php
+    if (!empty($_POST) ) {
+        $volume = (int)$_POST['volume'];
+        $year = (int)$_POST['year'];
+        $price = (int)$_POST['price'];
+        $engine_type = $_POST['engines'];
+        $current_year = (int)date("Y");
+
+        if($year < 1970) {
+            echo "Рік випуску автомобіля не може бути меншим за 1970 рік";
+            return;
+        }
+
+        $gas_base_rate = 50;
+        $diesel_base_rate = 75;
+
+        $engine_coefficient = $volume / 1000;
+        $age_coefficient = $current_year-($year+1);
+
+        switch ($engine_type) {
+            case 'gas':
+                if($age_coefficient == 1) {
+                    $tax = $gas_base_rate * $engine_coefficient * 1;
+                    $final_price = $price + $tax;
+                } else {
+                    $tax = $gas_base_rate * $engine_coefficient * $age_coefficient;
+                    $final_price = $price + $tax;
+                }
+                echo $final_price;
+                echo '<br>';
+                break;
+
+            case 'diesel':
+                if($age_coefficient == 1) {
+                    $tax = $diesel_base_rate * $engine_coefficient * 1;
+                    $final_price = $price + $tax;
+                } else {
+                    $tax = $diesel_base_rate * $engine_coefficient * $age_coefficient;
+                    $final_price = $price + $tax;
+                }
+                echo $final_price;
+                echo '<br>';
+                break;
+        }
+    } else {
+        echo "Будь ласка, заповніть всі поля";
+    }
+    ?>
+</div>
+</body>
+</html>
